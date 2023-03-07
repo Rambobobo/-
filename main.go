@@ -40,4 +40,14 @@ func mvcHadnle(app *iris.Application) {
 		userRouter.Post("/login", userController.Login)
 		userRouter.Post("/register", userController.Register)
 	}
+	//项目管理路由组
+	projectController := &controller.ProjectController{}
+	projectRouter := app.Party("/project")
+	{
+		projectRouter.Get("/{id:int64}", projectController.GetProjectByid)       //通过ID查询
+		projectRouter.Post("/", projectController.CreateProject)                 //创建项目
+		projectRouter.Delete("/{id:int64}", projectController.DeleteProjectByid) //通过ID删除
+		projectRouter.Get("/", projectController.GetAllProject)                  //查询所有项目
+
+	}
 }
