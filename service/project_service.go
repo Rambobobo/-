@@ -39,7 +39,7 @@ func (ps *ProjectService) GetById(id int64) (*model.Project, error) {
 	return project, nil
 }
 
-// DeleteProject 删除项目
+// DeleteProject 通过ID删除项目
 func (ps *ProjectService) DeleteProject(id int64) error {
 	engine, err := datasource.GetEngine()
 	if err != nil {

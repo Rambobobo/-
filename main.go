@@ -42,7 +42,7 @@ func mvcHadnle(app *iris.Application) {
 	}
 	//项目管理路由组
 	projectController := &controller.ProjectController{}
-	projectRouter := app.Party("/project")
+	projectRouter := app.Party("/projectmanager")
 	{
 		projectRouter.Get("/{id:int64}", projectController.GetProjectByid)       //通过ID查询
 		projectRouter.Post("/", projectController.CreateProject)                 //创建项目
@@ -50,4 +50,14 @@ func mvcHadnle(app *iris.Application) {
 		projectRouter.Get("/", projectController.GetAllProject)                  //查询所有项目
 
 	}
+	//测试用例管理路由组
+	testController := &controller.TestcaseController{}
+	testRouter := app.Party("/testcasemanager")
+	{
+		testRouter.Get("/{id:int64}", testController.GetCasesById)
+		testRouter.Post("/", testController.CreateCase)
+		testRouter.Delete("/{id:int64}", testController.DeleteCase)
+		testRouter.Get("/", testController.GetAllCase)
+	}
+
 }

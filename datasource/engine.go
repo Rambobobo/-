@@ -20,7 +20,7 @@ func GetEngine() (*xorm.Engine, error) {
 			log.Fatalf("连接数据库失败：%v", err)
 		}
 		//自动同步表结构
-		if err = engine.Sync2(new(model.User), new(model.Project)); err != nil {
+		if err = engine.Sync2(new(model.User), new(model.Project), new(model.TesetCase)); err != nil {
 			log.Fatalf("同步表结构失败: %v", err)
 		}
 	})
