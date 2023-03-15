@@ -52,3 +52,14 @@ func (us *UserService) SyncTable() error {
 	engine, _ := datasource.GetEngine()
 	return engine.Sync2(new(model.User))
 }
+
+//获取所有用户
+func (us *UserService) GetAllUser() ([]model.User, error) {
+	users := make([]model.User, 0)
+	engine, err := datasource.GetEngine()
+	if err != nil {
+		return nil, err
+	}
+	err = engine.Find(&users)
+	return users, err
+}

@@ -107,7 +107,7 @@ func (tc *TestcaseController) GetAllCase(ctx iris.Context) {
 	testcaseService := &service.TestcaseService{}
 	testcase, err := testcaseService.GetAllTestcase()
 	if err != nil {
-		ctx.StatusCode(iris.StatusBadRequest)
+		//ctx.StatusCode(iris.StatusBadRequest)
 		ctx.JSON(iris.Map{
 			"status":  "0",
 			"success": "查询失败",

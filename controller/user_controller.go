@@ -83,3 +83,22 @@ func (uc *UserController) Register(ctx iris.Context) {
 		"user":    user,
 	})
 }
+func (uc *UserController) GetAllUser(ctx iris.Context) {
+	userService := &service.UserService{}
+	users, err := userService.GetAllUser()
+	if err != nil {
+		ctx.JSON(iris.Map{
+			"status":  "0",
+			"success": "查询失败",
+			"message": err.Error(),
+		})
+		return
+	}
+	ctx.StatusCode(iris.StatusOK)
+	ctx.JSON(iris.Map{
+		"status":  "1",
+		"success": "查询成功",
+		"message": "查询成功",
+		"users":   users,
+	})
+}

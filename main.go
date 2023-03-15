@@ -17,7 +17,7 @@ func main() {
 	//路由设置
 	mvcHadnle(app)
 	app.Run(
-		iris.Addr(":9001"),     //监听9001端口
+		iris.Addr(":9002"),     //监听9002端口
 		iris.WithOptimizations, //对json数据序列化更快的配置
 	)
 }
@@ -39,6 +39,7 @@ func mvcHadnle(app *iris.Application) {
 	{
 		userRouter.Post("/login", userController.Login)
 		userRouter.Post("/register", userController.Register)
+		userRouter.Get("/info", userController.GetAllUser)
 	}
 	//项目管理路由组
 	projectController := &controller.ProjectController{}
